@@ -1,0 +1,25 @@
+# Levanta MongoDB + API en local. Uso: docker compose up --build
+services:
+  mongo:
+    image: mongo:7
+    container_name: tienda_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  api:
+    build: .
+    container_name: tienda_api
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URI: mongodb://mongo:27017
+      MONGO_DB: tienda_nosql
+    ports:
+      - "8000:8000"
+    # Crea colecciones con validación, carga datos de prueba y arranca la API
+    command: sh -c "python -m scripts.init_db && python -m scripts.seed && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+volumes:
+  mongo_data:
