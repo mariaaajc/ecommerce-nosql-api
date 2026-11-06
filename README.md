@@ -3,6 +3,8 @@
 Proyecto final · Bases de Datos II (No Relacionales) · UEES
 Stack: **Python 3.12 · FastAPI · MongoDB (Atlas o Docker) · PyMongo**
 
+Estudiante: María José Castellanos Castillo - CIF: 2026011165
+
 Caso de negocio: catálogo de e-commerce tipo almacén por departamentos con productos
 (variaciones y opiniones embebidas), usuarios (direcciones embebidas) y pedidos
 (referencia al usuario + ítems embebidos como snapshot de precio).
